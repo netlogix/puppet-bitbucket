@@ -20,7 +20,7 @@ class bitbucket::params {
       }
     } /Debian/: {
       $json_packages           = [ 'rubygem-json', 'ruby-json' ]
-      if $::operatingsystemmajrelease == '16.04' {
+      if versioncmp($::operatingsystemmajrelease, '16.04') >= 0 {
         $service_file_location = '/etc/systemd/system/bitbucket.service'
         $service_file_template = 'bitbucket/bitbucket.service.erb'
       } else {
